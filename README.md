@@ -1,8 +1,8 @@
 # Overview
-This project is a simple Docker container with the [AWS CLI](https://aws.amazon.com/cli/)
-that examines running EC2 instances, looking for special tags, returning the IP
-addresses of any that match.  The results of this search can be fed into other
-containers that perform actions against those instances.
+This project is a Docker container that is the first step in a pipeline of
+Docker containers that deploy Docker containers into EC2 instances.  The idea
+is to have everything run from within Docker, freeing CI/CD servers from having
+any required dependencies installed.
 
 # Guidebook
 Details about this project are contained in the [guidebook](guidebook/guidebook.md)
