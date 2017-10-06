@@ -46,7 +46,7 @@ function runContainer() {
                   --volume /etc/group:/etc/group \
                   --volume /var/run/docker.sock:/var/run/docker.sock \
                   --workdir $(pwd) \
-                  dockerec2tagsearch_ec2-docker-pipeline:latest /tmp/initiate-deployment-pipeline.sh"
+                  dockerec2pipeline_ec2-docker-pipeline:latest /tmp/initiate-deployment-pipeline.sh"
   echo $CMD
   $CMD
 }
