@@ -1,3 +1,3 @@
-deployer:
+ec2-docker-pipeline:
     build: .
     container_name: "ec2-docker-pipeline"

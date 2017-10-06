@@ -10,6 +10,8 @@ CMD ["aws", "--version", "&&", "docker", "--version"]
 
 # ---- watch your layers and put likely mutating operations here -----
 
+COPY ansible/initiate-deployment-pipeline.sh /tmp/initiate-deployment-pipeline.sh
+
 # Intall AWS CLI
 RUN apt-get update --yes && \
     apt-get install --yes curl python-pip && \

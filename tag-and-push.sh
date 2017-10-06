@@ -4,10 +4,10 @@
 UNIXTIME=$(date +%s)
 
 # docker tag SOURCE_IMAGE[:TAG] TARGET_IMAGE[:TAG]
-docker tag dockeransible2bastionaccess_deployer:latest kurron/docker-ansible:latest
-docker tag dockeransible2bastionaccess_deployer:latest kurron/docker-ansible:${UNIXTIME}
+docker tag dockerec2tagsearch_ec2-docker-pipeline:latest kurron/docker-ec2-pipeline:latest
+docker tag dockerec2tagsearch_ec2-docker-pipeline:latest kurron/docker-ec2-pipeline:${UNIXTIME}
 docker images
 
 # Usage:  docker push [OPTIONS] NAME[:TAG]
-docker push kurron/docker-ansible:latest
-docker push kurron/docker-ansible:${UNIXTIME}
+docker push kurron/docker-ec2-pipeline:latest
+docker push kurron/docker-ec2-pipeline:${UNIXTIME}

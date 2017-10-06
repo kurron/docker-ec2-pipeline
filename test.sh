@@ -15,7 +15,7 @@ VAULT_PATH=${VAULT_PATH:-CHANGEME}
 DOCKER_GROUP_ID=$(cut -d: -f3 < <(getent group docker))
 
 # Environment variable describing the location of the playbook to run
-PLAYBOOK=${PLAYBOOK:-$(pwd)/playbook.yml}
+PLAYBOOK=${PLAYBOOK:-$(pwd)/ansible/playbook.yml}
 
 function runContainer() {
   local USER_ID=$(id -u $(whoami))
@@ -46,7 +46,7 @@ function runContainer() {
                   --volume /etc/group:/etc/group \
                   --volume /var/run/docker.sock:/var/run/docker.sock \
                   --workdir $(pwd) \
-                  dockerec2tagsearch_deployer:latest ./initiate-deployment-pipeline.sh"
+                  dockerec2tagsearch_ec2-docker-pipeline:latest /tmp/initiate-deployment-pipeline.sh"
   echo $CMD
   $CMD
 }
