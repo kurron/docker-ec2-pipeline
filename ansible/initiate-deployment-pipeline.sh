@@ -29,10 +29,7 @@ function determineBastionAddress() {
   local DUTY_FILTER=Name=tag:Duty,Values=${BASTION_TAG}
 
   local CMD="aws ec2 describe-instances \
-                 --filters ${STATE_FILTER} \
-                 --filters ${PROJECT_FILTER} \
-                 --filters ${ENVIRONMENT_FILTER} \
-                 --filters ${DUTY_FILTER} \
+                 --filters ${STATE_FILTER} ${PROJECT_FILTER} ${ENVIRONMENT_FILTER} ${DUTY_FILTER} \
                  --query Reservations[0].Instances[*].[PublicIpAddress] \
                  --output text"
   echo ${CMD}
@@ -48,10 +45,7 @@ function determineDockerAddresses() {
   local DUTY_FILTER=Name=tag:Duty,Values=${PRIVATE_TAG}
 
   local CMD="aws ec2 describe-instances \
-                 --filters ${STATE_FILTER} \
-                 --filters ${PROJECT_FILTER} \
-                 --filters ${ENVIRONMENT_FILTER} \
-                 --filters ${DUTY_FILTER} \
+                 --filters ${STATE_FILTER} ${PROJECT_FILTER} ${ENVIRONMENT_FILTER} ${DUTY_FILTER} \
                  --query Reservations[*].Instances[*].[PrivateIpAddress] \
                  --output text"
 
