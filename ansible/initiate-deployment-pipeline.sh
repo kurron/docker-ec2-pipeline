@@ -76,7 +76,6 @@ function runContainer() {
                   --interactive \
                   --name deployer-test \
                   --rm \
-                  --tty \
                   --user=${USER_ID}:${GROUP_ID} \
                   --volume ${HOME_DIR}:${HOME_DIR} \
                   --volume ${PLAYBOOK}:${HOME_DIR}/playbook.yml \
