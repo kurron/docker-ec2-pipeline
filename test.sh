@@ -16,6 +16,7 @@ DOCKER_GROUP_ID=$(cut -d: -f3 < <(getent group docker))
 
 # Environment variable describing the location of the playbook to run
 PLAYBOOK=${PLAYBOOK:-$(pwd)/ansible/playbook.yml}
+EXTRA_VARS_YAML=${EXTRA_VARS_YAML:-$(pwd)/ansible/extra-vars.yml}
 
 function runContainer() {
   local USER_ID=$(id -u $(whoami))
@@ -35,6 +36,7 @@ function runContainer() {
                   --env SECRET_ID=${SECRET_ID} \
                   --env VAULT_PATH=${VAULT_PATH} \
                   --env PLAYBOOK=${PLAYBOOK} \
+                  --env EXTRA_VARS_YAML=${EXTRA_VARS_YAML} \
                   --interactive \
                   --name ec2-docker-pipeline \
                   --rm \

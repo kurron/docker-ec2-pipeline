@@ -22,6 +22,10 @@ ROLE_ID=${ROLE_ID:-CHANGEME}
 SECRET_ID=${SECRET_ID:-CHANGEME}
 VAULT_PATH=${VAULT_PATH:-CHANGEME}
 
+# Environment variables needed to launch the Ansible playbook
+PLAYBOOK=${PLAYBOOK:-CHANGEME}
+EXTRA_VARS_YAML=${EXTRA_VARS_YAML:-CHANGEME}
+
 function determineBastionAddress() {
   local STATE_FILTER=Name=instance-state-name,Values=running
   local PROJECT_FILTER=Name=tag:Project,Values=${PROJECT}
@@ -73,6 +77,7 @@ function runContainer() {
                   --user=${USER_ID}:${GROUP_ID} \
                   --volume ${HOME_DIR}:${HOME_DIR} \
                   --volume ${PLAYBOOK}:${HOME_DIR}/playbook.yml \
+                  --volume ${EXTRA_VARS_YAML}:${HOME_DIR}/extra-vars.yml \
                   --volume /etc/passwd:/etc/passwd \
                   --volume /etc/group:/etc/group \
                   --workdir ${HOME_DIR} \
