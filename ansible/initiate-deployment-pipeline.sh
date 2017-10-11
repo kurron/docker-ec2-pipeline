@@ -61,6 +61,10 @@ function determineDockerAddresses() {
 }
 
 function runContainer() {
+  local PULL="docker pull kurron/docker-ansible:latest"
+  echo $PULL
+  $PULL
+
   local CMD="docker run --net host \
                   --add-host bastion:${BASTION} \
                   --hostname inside-docker \
